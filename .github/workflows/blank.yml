@@ -46,9 +46,21 @@ jobs:
          sleep 2
          mkdir build
          sudo mount -t tmpfs -o size=11G tmpfs build
-	     sudo apt-get -y install  snapd qemu-user-static ubuntu-dev-tools
-	     sudo snap install --classic ubuntu-image
-	     sudo ubuntu-image --debug --workdir build classic image-definition.yaml
+         sudo apt -y install  snapd qemu-user-static ubuntu-dev-tools
+         sudo snap install --classic ubuntu-image
+         sudo ubuntu-image --debug --workdir build classic image-definition.yaml
+         sudo rm -rf build/chroot
+         sudo cp setup-script.sh build/root/
+         sudo chroot build/root /setup-script.sh
+         rootfs="ubuntu.rootfs.tar"
+         echo "rootfs=$rootfs" > rootfs
+         kernel_version="`ls -1 build/root/boot/vmlinu?-*|sed 's#-# #' | sed 's#-generic##' | awk '{ print $2 }'`"
+         echo "kernel_version=$kernel_version" > kernel_version
+         cd build/root &&  sudo tar -cvf ../../$rootfs --xattrs ./* && cd ../..
+         sudo umount build
+
+
+
 
       - name: disk image
         run: |
