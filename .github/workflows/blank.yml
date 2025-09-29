@@ -1,0 +1,69 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ubuntu-plucky-build
+on: workflow_dispatch
+#workflow_dispatch
+#[push]
+jobs:
+  command:
+    name: Use Linux commands
+    runs-on: ubuntu-24.04-arm
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: u-boot
+        run: |
+          sleep 2
+          sudo apt-get -y install  build-essential gcc-aarch64-linux-gnu bison \
+          qemu-user-static qemu-system-arm qemu-efi-aarch64 binfmt-support \
+          debootstrap flex libssl-dev bc rsync kmod cpio xz-utils fakeroot parted \
+          udev dosfstools uuid-runtime git-lfs device-tree-compiler python3 \
+          python-is-python3 fdisk bc debhelper python3-pyelftools python3-setuptools \
+          python3-pkg-resources swig libfdt-dev libpython3-dev gawk \
+          build-essential ncurses-dev xz-utils libssl-dev bc flex \
+          libelf-dev bison libgnutls28-dev git
+          sudo mount -t tmpfs -o size=2G tmpfs arm64
+          cd arm64
+          git clone --depth 1 https://github.com/rockchip-linux/rkbin
+          DDR=`ls rkbin/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2400MHz*.bin`
+          BL31=`ls rkbin/bin/rk35/rk3588_bl31*.elf`
+          git clone --depth 1 https://github.com/u-boot/u-boot.git -b v2025.04
+          cd u-boot
+          export BL31=../$BL31
+          export ROCKCHIP_TPL="../$DDR"
+          sed -i 's/scsi //' include/configs/rockchip-common.h
+          sed -i 's/mmc1/scsi mmc1/' include/configs/rockchip-common.h
+          sed -i 's/#ifndef CONFIG_XPL_BUILD/#ifndef CONFIG_XPL_BUILD\n\n# define BOOT_TARGET_DEVICES_SCSI(func)  func(SCSI, scsi, 0, 0, 1) func(SCSI, scsi, 0, 0, 2)/' include/configs/rockchip-common.h
+          make orangepi-5-rk3588s_defconfig
+          make
+          cp u-boot-rockchip.bin ../..
+          sudo umount arm64
+
+      - name: rootfs
+        run: |
+         sleep 2
+         mkdir build
+         sudo mount -t tmpfs -o size=11G tmpfs build
+	       sudo apt-get -y install  snapd qemu-user-static ubuntu-dev-tools
+	       sudo snap install --classic ubuntu-image
+	       sudo ubuntu-image --debug --workdir build classic image-definition.yaml
+
+      - name: disk image
+        run: |
+          sleep 2
+          sudo /bin/bash ./disk_image.sh arm64 orangepi-5 rk3588s-orangepi-5
+
+      - name: Upload a diisk image Artifact
+        uses: actions/upload-artifact@v4.5.0
+        with:
+        # A file, directory or wildcard pattern that describes what to upload
+          name: ubuntu-disk-image
+          path: ubuntu-mainline*.xz
+          compression-level: 0
+          # The desired behavior if no files are found using the provided path.
+          if-no-files-found: error
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
