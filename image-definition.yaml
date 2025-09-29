@@ -1,0 +1,54 @@
+---
+name: ubuntu-rootfs
+display-name: Ubuntu rootfs ARM64
+revision: 1
+architecture: arm64
+series: plucky
+class: preinstalled
+kernel: linux-generic
+rootfs:
+  archive: ubuntu
+  sources-list-deb822: true
+  components:
+    - main
+    - restricted
+    - universe
+    - multiverse
+  mirror: "https://mirror.hashy0917.net/ubuntu-ports/"
+  pocket: updates
+  seed:
+    urls:
+      - "https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/"
+    branch: plucky
+    names:
+#      - cloud-image
+#      - server
+      - minimal
+#      - standard
+customization:
+  extra-packages:
+    - name: "u-boot-tools"
+    - name: "u-boot-menu"
+    - name: "grub-efi-arm64"
+    - name: "ubuntu-desktop"
+    - name: "linux-firmware"
+    - name: "cloud-initramfs-growroot"
+    - name: "oem-config-gtk"
+    - name: "ubiquity-frontend-gtk"
+    - name: "ubiquity-slideshow-ubuntu"
+    - name: "yaru-theme-unity"
+    - name: "aptdaemon"
+    - name: "initramfs-tools"
+    - name: "localechooser-data"
+  extra-snaps:
+    - name: snapd
+    - name: bare
+    - name: core22
+    - name: core24
+    - name: firefox
+    - name: gnome-42-2204
+    - name: gtk-common-themes
+    - name: thunderbird
+    - name: ubuntu-image
+artifacts:
+  img:
