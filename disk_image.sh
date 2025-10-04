@@ -133,7 +133,7 @@ mkdir -p ${mount_point}
 
 
 # Copy the rootfs to root partition
-tar -xpf "${rootfs}" -C ${mount_point}/writable
+tar -xvpf "${rootfs}" -C ${mount_point}/writable
 fdt_name="/device-tree/rockchip/$3.dtb"
 
 dtbs_install_path="/lib/firmware/${kernel_version}"
