@@ -59,23 +59,17 @@ jobs:
          cd build/root &&  sudo tar -cvf ../../$rootfs --xattrs ./* && cd ../..
          sudo umount build
 
-
-
-
       - name: disk image
         run: |
           sleep 2
           sudo /bin/bash ./disk_image.sh arm64 orangepi-5 rk3588s-orangepi-5
-
-      - name: Upload a diisk image Artifact
+ 
+      - name: Upload a diisk image
         uses: actions/upload-artifact@v4.5.0
         with:
-        # A file, directory or wildcard pattern that describes what to upload
-          name: ubuntu-disk-image
-          path: ubuntu-mainline*.xz
-          compression-level: 0
+         name: ubuntu-disk-image
+         path: ubuntu-*.xz
+         compression-level: 0
           # The desired behavior if no files are found using the provided path.
-          if-no-files-found: error
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+         if-no-files-found: error
+          
