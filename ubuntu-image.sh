@@ -21,9 +21,9 @@ export LANG=C
 	 chroot build/root /setup-script.sh
 	 rm build/root/setup-script.sh
 	rootfs="overlay/ubuntu.rootfs.tar"
-	echo "rootfs=$rootfs" > overlay/rootfs
+	echo "rootfs=$rootfs" > ./rootfs
 	kernel_version="`ls -1 build/root/boot/vmlinu?-*|sed 's#-# #' | sed 's#-generic##' | awk '{ print $2 }'`"
-	echo "kernel_version=$kernel_version" > overlay/kernel_version
+	echo "kernel_version=$kernel_version" > ./kernel_version
 
 	cd build/root &&  tar -cvf ../../$rootfs --xattrs ./*
 	cd ../..
