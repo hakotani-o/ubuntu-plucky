@@ -43,12 +43,12 @@ export  LC_CTYPE=C
 export  LANGUAGE=C
 export  LANG=C
 
-if [ ! -f ./overlay/rootfs ]; then 
+if [ ! -f ./rootfs ]; then 
 	exit 1 
 fi
 
-. ./overlay/rootfs
-. ./overlay/kernel_version
+. ./rootfs
+. ./kernel_version
 
 rootfs="$(readlink -f "$rootfs")"
 if [[ "$(basename "${rootfs}")" != *".rootfs.tar" || ! -e "${rootfs}" ]]; then
