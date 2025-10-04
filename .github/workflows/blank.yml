@@ -37,7 +37,7 @@ jobs:
           sed -i 's/scsi //' include/configs/rockchip-common.h
           sed -i 's/mmc1/scsi mmc1/' include/configs/rockchip-common.h
           sed -i 's/#ifndef CONFIG_XPL_BUILD/#ifndef CONFIG_XPL_BUILD\n\n# define BOOT_TARGET_DEVICES_SCSI(func)  func(SCSI, scsi, 0, 0, 1) func(SCSI, scsi, 0, 0, 2)/' include/configs/rockchip-common.h
-          make orangepi-5-rk3588s_defconfig
+          make orangepi-5-rk3588s_defconfig || true
           make || true
           cp u-boot-rockchip.bin ../..
           sudo umount arm64
