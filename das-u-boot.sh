@@ -42,7 +42,7 @@ echo ""
 
 		make $1
 		make
-		cp u-boot-rockchip.bin ../../overlay/
+		cp u-boot-rockchip.bin ../..
 	echo "dd if=u-boot-rockchip.bin of=/dev/sdX seek=1 bs=32k conv=fsync"
 	cd ../..
 echo "DISK usage"
