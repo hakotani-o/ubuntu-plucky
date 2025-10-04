@@ -24,6 +24,7 @@ jobs:
           python3-pkg-resources swig libfdt-dev libpython3-dev gawk \
           build-essential ncurses-dev xz-utils libssl-dev bc flex \
           libelf-dev bison libgnutls28-dev git
+          mkdir arm64
           sudo mount -t tmpfs -o size=2G tmpfs arm64
           cd arm64
           git clone --depth 1 https://github.com/rockchip-linux/rkbin
