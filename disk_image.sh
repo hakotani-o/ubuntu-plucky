@@ -56,10 +56,8 @@ if [[ "$(basename "${rootfs}")" != *".rootfs.tar" || ! -e "${rootfs}" ]]; then
     exit 1
 fi
 
-mkdir -p images
-
 # Create an empty disk image
-img="./images/ubuntu-${kernel_version}-$2.img"
+img="./ubuntu-${kernel_version}-$2.img"
 size="$(( $(wc -c < "${rootfs}" ) / 1024 / 1024 ))"
 truncate -s "$(( size + 512 ))M" "${img}"
 
@@ -154,10 +152,10 @@ echo "UUID=${root_uuid,,} /              ext4    defaults,x-systemd.growfs    0 
 
 
 # Write bootloader to disk image
-if [ -f "overlay/u-boot-rockchip.bin" ]; then
-    dd if="overlay/u-boot-rockchip.bin" of="${loop}" seek=1 bs=32k conv=fsync
+if [ -f "u-boot-rockchip.bin" ]; then
+    dd if="u-boot-rockchip.bin" of="${loop}" seek=1 bs=32k conv=fsync
 else
-	echo "overlay/u-boot-rockchip.bin not found"
+	echo "u-boot-rockchip.bin not found"
 	exit 1
 fi
 
