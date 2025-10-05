@@ -22,7 +22,7 @@ export LANG=C
 	 rm build/root/setup-script.sh
 	rootfs="./ubuntu.rootfs.tar"
 	echo "rootfs=$rootfs" > ./rootfs
-	kernel_version="`ls -1 build/root/boot/vmlinu?-*|sed 's#-# #' | sed 's#-generic##' | awk '{ print $2 }'`"
+	kernel_version="`ls -1 build/root/boot/vmlinu?-*|sed 's#-# #' | awk '{ print $2 }'`"
 	echo "kernel_version=$kernel_version" > ./kernel_version
 
 	cd build/root &&  tar -cvf ../../$rootfs --xattrs ./*
