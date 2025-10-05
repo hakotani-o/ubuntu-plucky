@@ -136,7 +136,7 @@ mkdir -p ${mount_point}
 tar -xpf "${rootfs}" -C ${mount_point}/writable
 fdt_name="/device-tree/rockchip/$3.dtb"
 
-dtbs_install_path="/usr/lib/firmware/${kernel_version}"
+dtbs_install_path="/lib/firmware/${kernel_version}"
 
 if [ ! -f ${mount_point}/writable${dtbs_install_path}${fdt_name} ]; then
 	echo "$3.dtb not found"
