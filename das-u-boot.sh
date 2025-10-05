@@ -38,7 +38,6 @@ echo ""
 	sed -i 's/scsi //' include/configs/rockchip-common.h
 	sed -i 's/mmc1/scsi mmc1/' include/configs/rockchip-common.h
 	sed -i 's/#ifndef CONFIG_XPL_BUILD/#ifndef CONFIG_XPL_BUILD\n\n# define BOOT_TARGET_DEVICES_SCSI(func)	func(SCSI, scsi, 0, 0, 1) func(SCSI, scsi, 0, 0, 2) func(SCSI, scsi, 0, 0, 3)/' include/configs/rockchip-common.h
-	echo "CONFIG_CMD_KASLRSEED=y" >> configs/orangepi-5-plus-rk3588_defconfig
 
 		make $1
 		make
