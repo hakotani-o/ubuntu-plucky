@@ -144,11 +144,6 @@ if [ ! -f ${mount_point}/writable${dtbs_install_path}${fdt_name} ]; then
 	exit 1
 fi
 
-if [ ! -d ${mount_ponit}/writable/var/lib/apt/lists/partial ]; then
-	echo "BAD ROOTFS file"
-	exit 1
-fi
-
 fstab_boot_uuid="${boot_uuid:0:4}-${boot_uuid:4}"
 
 # Create fstab entries
