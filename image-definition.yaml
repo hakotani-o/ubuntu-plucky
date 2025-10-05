@@ -45,9 +45,9 @@ customization:
     - name: bare
     - name: core22
     - name: core24
-#    - name: firefox
+    - name: firefox
     - name: gnome-42-2204
     - name: gtk-common-themes
-#    - name: thunderbird
+    - name: thunderbird
 artifacts:
   img:
