@@ -8,7 +8,7 @@
 	/usr/sbin/useradd -d /home/oem -G adm,sudo,video -m -N -u 29999 oem
 	/usr/sbin/oem-config-prepare --quiet
 	touch "/var/lib/oem-config/run"
-	echo -n "rootwait rw console=ttyS2,1500000 console=tty1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory" > /etc/kernel/cmdline
+	echo -n "rootwait rw  console=tty1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory" > /etc/kernel/cmdline
 	echo -n " quiet splash plymouth.ignore-serial-consoles" >> /etc/kernel/cmdline
 	# Override u-boot-menu config 
 	mkdir -p /usr/share/u-boot-menu/conf.d
