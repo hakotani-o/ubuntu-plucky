@@ -25,5 +25,7 @@ EOF
 	chown syslog:adm /var/log/syslog
 	ssh-keygen -A
 
-	echo U_BOOT_FDT='"'"device-tree/rockchip/rk3588s-orangepi-5.dtb"'"' >> /etc/default/u-boot
-	u-boot-update
+	/usr/sbin/useradd -d /home/oem -G adm,sudo,video -m -N -u 29999 oem
+    /usr/sbin/oem-config-prepare --quiet
+    touch "/var/lib/oem-config/run"
+
