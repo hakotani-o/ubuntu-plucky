@@ -3,9 +3,9 @@ name: ubuntu-rootfs
 display-name: Ubuntu rootfs ARM64
 revision: 1
 architecture: arm64
-series: plucky
+series: questing
 class: preinstalled
-kernel: linux-generic
+#kernel: linux-generic
 rootfs:
   archive: ubuntu
   sources-list-deb822: true
@@ -14,12 +14,13 @@ rootfs:
     - restricted
     - universe
     - multiverse
-  mirror: "https://mirror.hashy0917.net/ubuntu-ports/"
+  mirror: "http://mirror.hashy0917.net/ubuntu-ports/"
+#  mirror: "http://ports.ubuntu.com/ubuntu-ports"
   pocket: updates
   seed:
     urls:
       - "https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/"
-    branch: plucky
+    branch: questing
     names:
 #      - cloud-image
 #      - server
@@ -29,17 +30,19 @@ customization:
   extra-packages:
     - name: "u-boot-tools"
     - name: "u-boot-menu"
-    - name: "grub-efi-arm64"
-    - name: "ubuntu-desktop"
+#    - name: "grub-efi-arm64"
+    - name: "ubuntu-desktop-minimal"
     - name: "linux-firmware"
     - name: "cloud-initramfs-growroot"
     - name: "oem-config-gtk"
     - name: "ubiquity-frontend-gtk"
-    - name: "ubiquity-slideshow-ubuntu"
     - name: "yaru-theme-unity"
     - name: "aptdaemon"
     - name: "initramfs-tools"
     - name: "localechooser-data"
+    - name: "oem-config"
+    - name: "oem-config-debconf"
+    - name: "ubiquity-slideshow-ubuntu"
   extra-snaps:
     - name: snapd
     - name: bare
