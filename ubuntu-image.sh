@@ -63,9 +63,9 @@ teardown_mountpoint() {
 	 rm build/chroot/setup-script.sh
 	 rm -rf build/chroot/kernel
 	rootfs="overlay/ubuntu.rootfs.tar"
-	echo "rootfs=$rootfs" > overlay/rootfs
+	echo "rootfs=$rootfs" > rootfs
 	kernel_version="`ls -1 build/chroot/boot/vmlinu?-*|sed 's#-# #' | awk '{ print $2 }'`"
-	echo "kernel_version=$kernel_version" > overlay/kernel_version
+	echo "kernel_version=$kernel_version" > kernel_version
 
 	cd build/chroot &&  tar -cf ../../$rootfs --xattrs ./*
 	cd ../..
