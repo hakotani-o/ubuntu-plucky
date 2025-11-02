@@ -20,7 +20,9 @@ jobs:
         run: /bin/bash ./build-kernel.sh arm64 2>&1|tee log1
 
       - name: rootfs
-        run: sudo /bin/bash ./ubuntu-image.sh
+        run: |
+            ls
+            sudo /bin/bash ./ubuntu-image.sh
 
       - name: disk image
         run: /bin/bash sudo ./disk_image.sh arm64 orangepi-5 rk3588s-orangepi-5
