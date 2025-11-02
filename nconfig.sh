@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -f .config
-cat arch/arm64/configs/defconfig ../../overlay/my-add.txt > .config
+cat arch/arm64/configs/defconfig ../../my-add.txt > .config
 #cat ../../overlay/my-add.txt arch/arm64/configs/defconfig ../../overlay/my-add.txt > .config
 #cat arch/arm64/configs/defconfig ../../overlay/my-add.txt ../../overlay/hd-audio-config > .config
 
