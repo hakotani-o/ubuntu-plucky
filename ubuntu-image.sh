@@ -18,6 +18,7 @@ export LANG=C
 	 ubuntu-image --debug --workdir build classic image-definition.yaml
 
 	 rm -rf build/root
+	 chmod +x setup-script.sh
 	 cp setup-script.sh build/chroot/
 
 setup_mountpoint() {
@@ -62,7 +63,7 @@ teardown_mountpoint() {
 	teardown_mountpoint build/chroot
 	 rm build/chroot/setup-script.sh
 	 rm -rf build/chroot/kernel
-	rootfs="overlay/ubuntu.rootfs.tar"
+	rootfs="./ubuntu.rootfs.tar"
 	echo "rootfs=$rootfs" > rootfs
 	kernel_version="`ls -1 build/chroot/boot/vmlinu?-*|sed 's#-# #' | awk '{ print $2 }'`"
 	echo "kernel_version=$kernel_version" > kernel_version
