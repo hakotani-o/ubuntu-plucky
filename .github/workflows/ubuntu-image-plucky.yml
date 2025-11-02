@@ -14,7 +14,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: u-boot
-        run: sudo /bin/bash  ./das-u-boot.sh orangepi-5-rk3588s_defconfig 07
+        run: /bin/bash  ./das-u-boot.sh orangepi-5-rk3588s_defconfig 07
+
+      - name: kernel
+        run: /bin/bash ./build-kernel.sh arm64 2>&1|tee log1
 
       - name: rootfs
         run: sudo /bin/bash ./ubuntu-image.sh
