@@ -107,8 +107,8 @@ chmod 755 $KERNEL_BASE_PACKAGE/DEBIAN/postinst
 
 # Build packaage
 rm -rf ../kernel && mkdir ../kernel
-fakeroot dpkg-deb -z 4 -Z xz -b $KERNEL_BASE_PACKAGE ../kernel/
-fakeroot dpkg-deb -z 4 -Z xz -b $HEADER_BASE_PACKAGE ../kernel/
+fakeroot dpkg-deb -z 4 -Z xz -b $KERNEL_BASE_PACKAGE ..
+fakeroot dpkg-deb -z 4 -Z xz -b $HEADER_BASE_PACKAGE ..
 
 rm -f ../overlay/tmp_var.txt
 
