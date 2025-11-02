@@ -110,7 +110,7 @@ rm -rf ../kernel && mkdir ../kernel
 fakeroot dpkg-deb -z 4 -Z xz -b $KERNEL_BASE_PACKAGE ..
 fakeroot dpkg-deb -z 4 -Z xz -b $HEADER_BASE_PACKAGE ..
 
-rm -f ../overlay/tmp_var.txt
+rm -f ../tmp_var.txt
 
 # Exit trap is no longer needed
 trap '' EXIT
