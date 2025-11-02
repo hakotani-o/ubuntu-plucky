@@ -22,10 +22,10 @@ cd $linux_dir
 git clone --depth 1 https://github.com/torvalds/linux.git
 head -5 linux/Makefile | sed 's# ##g' > ../overlay/tmp_var.txt
 cd linux
-. ../../overlay/tmp_var.txt
+. ../../tmp_var.txt
 
 
-cp ../../overlay/nconfig.sh . && ./nconfig.sh
+cp ../../nconfig.sh . && ./nconfig.sh
 
 now=`date +"%Y%m%d"`
 EXTRAVERSION="${EXTRAVERSION}-$now"
