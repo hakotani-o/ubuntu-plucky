@@ -25,7 +25,7 @@ cd linux
 . ../../tmp_var.txt
 
 
-cp ../../nconfig.sh . && ./nconfig.sh
+cp ../../nconfig.sh . && /bin/bash ./nconfig.sh
 
 now=`date +"%Y%m%d"`
 EXTRAVERSION="${EXTRAVERSION}-$now"
