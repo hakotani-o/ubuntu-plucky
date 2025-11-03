@@ -59,7 +59,7 @@ fi
 mkdir -p images
 
 # Create an empty disk image
-img="./images/ubuntu-${kernel_version}-$2.img"
+img="./ubuntu-${kernel_version}-$2.img"
 size="$(( $(wc -c < "${rootfs}" ) / 1024 / 1024 ))"
 truncate -s "$(( size + 512 ))M" "${img}"
 
