@@ -22,12 +22,13 @@ jobs:
       - name: rootfs
         run: |
             ls
-            sudo /bin/bash ./ubuntu-image.sh
+            chmod +x ubuntu-image.sh
+            sudo  ./ubuntu-image.sh
 
       - name: disk image
         run:  |
             chmod +x disk_image.sh
-            /bin/bash sudo ./disk_image.sh arm64 orangepi-5 rk3588s-orangepi-5
+            sudo  ./disk_image.sh arm64 orangepi-5 rk3588s-orangepi-5
  
       - name: Upload a diisk image
         uses: actions/upload-artifact@v4.5.0
