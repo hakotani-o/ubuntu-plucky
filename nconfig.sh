@@ -16,4 +16,4 @@ cat arch/arm64/configs/defconfig ../../my-add.txt > .config
 	echo "\n"
 } | make nconfig
 
-	cp .config ../../overlay/1-config.txt
+	cp .config ../../1-config.txt
