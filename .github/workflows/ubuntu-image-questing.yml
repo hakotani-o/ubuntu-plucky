@@ -29,6 +29,9 @@ jobs:
         run:  |
             chmod +x disk_image.sh
             sudo  ./disk_image.sh arm64 orangepi-5 rk3588s-orangepi-5
+            echo "============================"
+            ls -l
+            echo "============================="
  
       - name: Upload a diisk image
         uses: actions/upload-artifact@v4.5.0
