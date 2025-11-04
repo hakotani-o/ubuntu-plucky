@@ -17,7 +17,7 @@ if [ $mem_size -gt 2 ]; then
 fi
 	cd arm64
 
-#		git clone --depth 1 https://github.com/rockchip-linux/rkbin
+		git clone --depth 1 https://github.com/rockchip-linux/rkbin
         git clone --depth 1 https://source.denx.de/u-boot/custodians/u-boot-rockchip.git -b u-boot-rockchip-20251101 u-boot
 		DDR=`ls rkbin/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2400MHz_v*.bin`
 		BL31=`ls rkbin/bin/rk35/rk3588_bl31*.elf`
