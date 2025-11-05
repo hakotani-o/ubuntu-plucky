@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: ubuntu-image-questing
+name: ubuntu-image-questing-5-plus
 on: workflow_dispatch
 #workflow_dispatch
 #[push]
