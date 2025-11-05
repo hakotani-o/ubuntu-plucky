@@ -143,8 +143,8 @@ else
 fi
 
 echo U_BOOT_FDT='"'"device-tree/rockchip/$3.dtb"'"' >> ${mount_point}/writable/etc/default/u-boot
-echo U_BOOT_FDT_DIR='"/boot/dtsb/"' >> ${mount_point}/writable/etc/default/u-boot
-echo U_BOOT_FDT_OVERLAYS_DIR='"/boot/dtsb/"' >> ${mount_point}/writable/etc/default/u-boot
+echo U_BOOT_FDT_DIR='"/boot/dtbs/"' >> ${mount_point}/writable/etc/default/u-boot
+echo U_BOOT_FDT_OVERLAYS_DIR='"/boot/dtbs/"' >> ${mount_point}/writable/etc/default/u-boot
 
 
 mountpoint="${mount_point}/writable"
