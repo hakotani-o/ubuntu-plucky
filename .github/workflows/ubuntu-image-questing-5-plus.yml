@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ubuntu-image-questing
+on: workflow_dispatch
+#workflow_dispatch
+#[push]
+jobs:
+  command:
+    name: Use Linux commands
+    runs-on: ubuntu-24.04-arm
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: u-boot
+        run: /bin/bash  ./das-u-boot.sh orangepi-5-plus-rk3588_defconfig 07
+
+      - name: kernel
+        run: /bin/bash ./build-kernel.sh arm64 2>&1|tee log1
+
+      - name: rootfs
+        run: |
+            ls
+            chmod +x ubuntu-image.sh
+            sudo  ./ubuntu-image.sh
+
+      - name: disk image
+        run:  |
+            chmod +x disk_image.sh
+            sudo  ./disk_image.sh arm64 orangepi-5-plus rk3588-orangepi-5-plus
+            echo "============================"
+            ls -l
+            echo "============================="
+ 
+      - name: Upload a diisk image
+        uses: actions/upload-artifact@v4.5.0
+        with:
+         name: ubuntu-disk-image-5-plus
+         path: ./Ubuntu-*img.xz
+         compression-level: 0
+          # The desired behavior if no files are found using the provided path.
+         if-no-files-found: error
+          
