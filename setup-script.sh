@@ -18,6 +18,11 @@ EOF
 	touch /var/log/syslog
 	chown syslog:adm /var/log/syslog
 	ssh-keygen -A
+	pam="$(grep pam_pwquality.so /etc/pam.d/common-password | awk '{ print $3 }')"
+	if [ $pam == "pam_pwquality.so" ]; then
+                echo "  \n\n" > pam-auth-update --force
+    fi
+
 
 	dpkg -i kernel/*
 	cd / && rm -rf kernel
