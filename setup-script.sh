@@ -20,7 +20,7 @@ EOF
 	ssh-keygen -A
 	pam="$(grep pam_pwquality.so /etc/pam.d/common-password | awk '{ print $3 }')"
 	if [ $pam == "pam_pwquality.so" ]; then
-        sed -i 's/pam_pwquality.so retry=3/pam_pwquality.so dictcheck=0 retry=3/' $1/etc/pam.d/common-password
+        sed -i 's/pam_pwquality.so retry=3/pam_pwquality.so dictcheck=0 retry=3/' /etc/pam.d/common-password
     fi
 
 
