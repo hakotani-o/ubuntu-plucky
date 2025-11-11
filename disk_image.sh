@@ -148,6 +148,14 @@ echo U_BOOT_FDT_OVERLAYS_DIR='"/boot/dtbs/"' >> ${mount_point}/writable/etc/defa
 
 
 mountpoint="${mount_point}/writable"
+pam="$(grep pam_pwquality.so $mountpoint/etc/pam.d/common-password | awk '{ print $3 }')"
+    if [ $pam == "pam_pwquality.so" ]; then
+		   chmod +x pam-auth.sh
+           cp pam-auth.sh $mountpoint
+           chroot $mountpoint /pam-auth.sh
+           rm $mountpoint/pam-auth.sh
+    fi
+
 mount dev-live -t devtmpfs "$mountpoint/dev"
 mount devpts-live -t devpts -o nodev,nosuid "$mountpoint/dev/pts"
 mount proc-live -t proc "$mountpoint/proc"
