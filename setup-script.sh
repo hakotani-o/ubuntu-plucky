@@ -18,11 +18,6 @@ EOF
 	touch /var/log/syslog
 	chown syslog:adm /var/log/syslog
 	ssh-keygen -A
-	pam="$(grep pam_pwquality.so /etc/pam.d/common-password | awk '{ print $3 }')"
-	if [ $pam == "pam_pwquality.so" ]; then
-        sed -i 's/pam_pwquality.so retry=3/pam_pwquality.so dictcheck=0 retry=3/' /etc/pam.d/common-password
-    fi
-
 
 	dpkg -i kernel/*
 	cd / && rm -rf kernel
