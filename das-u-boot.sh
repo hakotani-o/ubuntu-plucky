@@ -7,7 +7,7 @@ udev dosfstools uuid-runtime git-lfs device-tree-compiler python3 \
 python-is-python3 fdisk bc debhelper python3-pyelftools python3-setuptools \
 python3-pkg-resources swig libfdt-dev libpython3-dev gawk \
 git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex \
-libelf-dev bison libgnutls28-dev
+libelf-dev bison libgnutls28-dev libdw-dev
 
 	rm -rf arm64
 	mkdir arm64
