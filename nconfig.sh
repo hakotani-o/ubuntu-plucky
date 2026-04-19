@@ -12,8 +12,11 @@ cat arch/arm64/configs/defconfig ../../my-add.txt > .config
 	echo "\n"
 	sleep 15
 	echo "\n"
+	sleep 15
 	echo '9'
+	sleep 15
 	echo "\n"
+	sleep 15
 } | make nconfig
 
 	cp .config ../../1-config.txt
