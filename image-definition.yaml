@@ -3,7 +3,7 @@ name: ubuntu-rootfs
 display-name: Ubuntu rootfs ARM64
 revision: 2
 architecture: arm64
-series: questing
+series: resolute
 class: preinstalled
 #kernel: linux-generic
 rootfs:
@@ -20,7 +20,7 @@ rootfs:
   seed:
     urls:
       - "https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/"
-    branch: questing
+    branch: resolute
     names:
 #      - cloud-image
 #      - server
