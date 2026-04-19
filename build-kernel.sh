@@ -22,12 +22,16 @@ git clone --depth 1 https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux
 #git clone --depth 1 https://github.com/torvalds/linux.git
 
 cd linux
+make defconfig
+./scripts/kconfig/merge_config.sh -m .config ../../my-add.txt
 
-cp ../../nconfig.sh . && /bin/bash ./nconfig.sh
 ./scripts/config --set-val DEBUG_INFO_NONE y
 ./scripts/config --disable DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT
 ./scripts/config --disable DEBUG_INFO_DWARF4
 ./scripts/config --disable DEBUG_INFO_DWARF5
+
+make olddefconfig
+
 fakeroot make -j$(nproc) LOCALVERSION="-rockchip" deb-pkg
 
 # Exit trap is no longer needed
