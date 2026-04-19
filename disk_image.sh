@@ -143,8 +143,8 @@ else
 fi
 
 echo U_BOOT_FDT='"'"device-tree/rockchip/$3.dtb"'"' >> ${mount_point}/writable/etc/default/u-boot
-echo U_BOOT_FDT_DIR='"/boot/dtbs/"' >> ${mount_point}/writable/etc/default/u-boot
-echo U_BOOT_FDT_OVERLAYS_DIR='"/boot/dtbs/"' >> ${mount_point}/writable/etc/default/u-boot
+#echo U_BOOT_FDT_DIR='"/boot/dtbs/"' >> ${mount_point}/writable/etc/default/u-boot
+#echo U_BOOT_FDT_OVERLAYS_DIR='"/boot/dtbs/"' >> ${mount_point}/writable/etc/default/u-boot
 
 
 mountpoint="${mount_point}/writable"
@@ -164,9 +164,6 @@ mount securityfs -t securityfs "$mountpoint/sys/kernel/security"
 
 # u-boot-update 
 chroot ${mount_point}/writable/ /bin/bash -c "u-boot-update"
-
-# if can not login password length
-#	chroot ${mount_point}/writable/ /bin/bash -c "pam-auth-update --force"
 
 sync --file-system
 sync
