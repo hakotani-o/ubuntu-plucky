@@ -9,7 +9,7 @@ if [ $# -ne 1 ]; then
 fi
 
 linux_dir=$1
-suite=oracular
+
 rm -rf $linux_dir && mkdir $linux_dir
 mem_size=`free --giga|grep Mem|awk '{print $2}'`
 if [ $mem_size -gt 8 ]; then
@@ -33,6 +33,7 @@ fakeroot make -j$(nproc) LOCALVERSION="-rockchip" deb-pkg
 # Exit trap is no longer needed
 trap '' EXIT
 cd ..
+cp *.deb ../..
 echo "DISK usage"
 df $1
 if [ $mem_size -gt 4 ]; then
