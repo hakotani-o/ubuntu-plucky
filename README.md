@@ -1,1 +1,1 @@
-# ubuntu-questing
+# ubuntu-resolute
