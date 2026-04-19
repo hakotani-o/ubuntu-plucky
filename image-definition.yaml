@@ -14,13 +14,13 @@ rootfs:
     - restricted
     - universe
     - multiverse
-  mirror: "http://mirror.hashy0917.net/ubuntu-ports/"
-#  mirror: "http://ports.ubuntu.com/ubuntu-ports"
+#  mirror: "http://mirror.hashy0917.net/ubuntu-ports/"
+   mirror: "http://ports.ubuntu.com/ubuntu-ports"
   pocket: updates
   seed:
     urls:
       - "https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/"
-    branch: questing
+    branch: resolute
     names:
 #      - cloud-image
 #      - server
