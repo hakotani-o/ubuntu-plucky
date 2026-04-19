@@ -8,9 +8,9 @@ cat arch/arm64/configs/defconfig ../../my-add.txt > .config
 {
 	sleep 15
 	echo '6'
-	sleep 5
+	sleep 15
 	echo "\n"
-	sleep 5
+	sleep 15
 	echo "\n"
 	echo '9'
 	echo "\n"
