@@ -33,7 +33,8 @@ fakeroot make -j$(nproc) LOCALVERSION="-rockchip" deb-pkg
 # Exit trap is no longer needed
 trap '' EXIT
 cd ..
-cp *.deb ../..
+cp *.deb ..
+cd ..
 echo "DISK usage"
 df $1
 if [ $mem_size -gt 4 ]; then
