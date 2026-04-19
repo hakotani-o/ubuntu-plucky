@@ -15,7 +15,7 @@ rootfs:
     - universe
     - multiverse
 #  mirror: "http://mirror.hashy0917.net/ubuntu-ports/"
-   mirror: "http://ports.ubuntu.com/ubuntu-ports"
+  mirror: "http://ports.ubuntu.com/ubuntu-ports/"
   pocket: updates
   seed:
     urls:
