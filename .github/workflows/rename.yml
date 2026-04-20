@@ -1,0 +1,21 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ubuntu-rename
+on: workflow_dispatch
+#workflow_dispatch
+#[push]
+jobs:
+  command:
+    name: Use Linux commands
+    runs-on: ubuntu-24.04-arm
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: rebame
+        run: |
+	    cd .github/workflows
+	    mv ubuntu-image-questing-5-plus.yml ubuntu-image-orangepi-5-plus.yml
+	    mv ubuntu-image-questing-5.yml ubuntu-image-orangepi-5.yml
+
