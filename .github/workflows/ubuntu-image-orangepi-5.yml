@@ -43,7 +43,7 @@ jobs:
 #         if-no-files-found: error
           
  # 旧: upload-artifact のステップをコメントアウトまたは削除し、以下を追加
-       - name: Create Release and Upload
+      - name: Create Release and Upload
         uses: softprops/action-gh-release@v2
         with:
           # 実行するたびにユニークなタグ名（例: build-1, build-2...）を付けます
