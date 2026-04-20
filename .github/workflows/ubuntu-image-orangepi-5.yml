@@ -48,7 +48,7 @@ jobs:
         with:
           # 実行するたびにユニークなタグ名（例: build-1, build-2...）を付けます
           tag_name: build-${{ github.run_number }}
-          name: "Orange Pi 5 Kernel Build ${{ github.run_number }}"
+          name: "Orange Pi 5 Disk Image Build ${{ github.run_number }}"
           body: |
             Orange Pi 5 自作ディスクイメージ
             ビルド日時: ${{ github.event.head_commit.timestamp }}
@@ -56,9 +56,7 @@ jobs:
           draft: false
           prerelease: false
           # ここに圧縮済みファイルのパスを指定します
-          files: |
-            path/to/your/image.img.xz
-            ./*.deb
+          files: ./Ubuntu-*img.xz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
