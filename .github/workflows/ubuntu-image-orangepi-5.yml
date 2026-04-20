@@ -43,13 +43,22 @@ jobs:
 #         if-no-files-found: error
           
  # 旧: upload-artifact のステップをコメントアウトまたは削除し、以下を追加
-      - name: Create Release
+       - name: Create Release and Upload
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         with:
-          tag_name: "build-${{ github.run_number }}-${{ github.run_id }}" # 重複しないタグ名
-          name: "OrangePi-5 Image (Build ${{ github.run_number }})"
+          # 実行するたびにユニークなタグ名（例: build-1, build-2...）を付けます
+          tag_name: build-${{ github.run_number }}
+          name: "Orange Pi 5 Kernel Build ${{ github.run_number }}"
+          body: |
+            Orange Pi 5 自作ディスクイメージ
+            ビルド日時: ${{ github.event.head_commit.timestamp }}
+            ベースカーネル: 最新メインライン
+          draft: false
+          prerelease: false
+          # ここに圧縮済みファイルのパスを指定します
           files: |
-            ./Ubuntu-*img.xz            # 圧縮したイメージのパス（推奨）
+            path/to/your/image.img.xz
+            ./*.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
