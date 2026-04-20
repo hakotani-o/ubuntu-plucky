@@ -33,12 +33,29 @@ jobs:
             ls -l
             echo "============================="
  
-      - name: Upload a diisk image
-        uses: actions/upload-artifact@v4.5.0
-        with:
-         name: ubuntu-image-orangepi-5-plus
-         path: ./Ubuntu-*img.xz
-         compression-level: 0
-          # The desired behavior if no files are found using the provided path.
-         if-no-files-found: error
+#      - name: Upload a diisk image
+#        uses: actions/upload-artifact@v4.5.0
+#        with:
+#         name: ubuntu-image-orangepi-5-plus
+#         path: ./Ubuntu-*img.xz
+#         compression-level: 0
+#          # The desired behavior if no files are found using the provided path.
+#         if-no-files-found: error
           
+# 旧: upload-artifact のステップをコメントアウトまたは削除し、以下を追加
+      - name: Create Release and Upload
+        uses: softprops/action-gh-release@v2
+        with:
+          # 実行するたびにユニークなタグ名（例: build-1, build-2...）を付けます
+          tag_name: build-${{ github.run_number }}
+          name: "Orange Pi 5 PLUS Disk Image Build ${{ github.run_number }}"
+          body: |
+            Orange Pi 5 自作ディスクイメージ
+            ビルド日時: '${{ github.event.head_commit.timestamp }}'
+            ベースカーネル: 最新メインライン
+          draft: false
+          prerelease: false
+          # ここに圧縮済みファイルのパスを指定します
+          files: ./Ubuntu-*img.xz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
