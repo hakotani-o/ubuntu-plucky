@@ -33,12 +33,23 @@ jobs:
             ls -l
             echo "============================="
  
-      - name: Upload a diisk image
-        uses: actions/upload-artifact@v4.5.0
-        with:
-         name: ubuntu-image-orangepi-5
-         path: ./Ubuntu-*img.xz
-         compression-level: 0
-          # The desired behavior if no files are found using the provided path.
-         if-no-files-found: error
+#      - name: Upload a diisk image
+#        uses: actions/upload-artifact@v4.5.0
+#        with:
+#         name: ubuntu-image-orangepi-5
+#         path: ./Ubuntu-*img.xz
+#         compression-level: 0
+#          # The desired behavior if no files are found using the provided path.
+#         if-no-files-found: error
           
+ # 旧: upload-artifact のステップをコメントアウトまたは削除し、以下を追加
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+        with:
+          tag_name: "build-${{ github.run_number }}-${{ github.run_id }}" # 重複しないタグ名
+          name: "OrangePi-5 Image (Build ${{ github.run_number }})"
+          files: |
+            ./Ubuntu-*img.xz            # 圧縮したイメージのパス（推奨）
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
