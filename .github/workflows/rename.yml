@@ -15,7 +15,7 @@ jobs:
 
       - name: rebame
         run: |
-	    cd .github/workflows
-	    mv ubuntu-image-questing-5-plus.yml ubuntu-image-orangepi-5-plus.yml
-	    mv ubuntu-image-questing-5.yml ubuntu-image-orangepi-5.yml
+	        cd .github/workflows
+	        mv ubuntu-image-questing-5-plus.yml ubuntu-image-orangepi-5-plus.yml
+	        mv ubuntu-image-questing-5.yml ubuntu-image-orangepi-5.yml
 
