@@ -49,10 +49,10 @@ customization:
     - name: snapd
 #    - name: bare
 #    - name: core22
-    - name: core24
-    - name: firefox
-    - name: gnome-46-2404
-    - name: gtk-common-themes
+#    - name: core24
+#    - name: firefox
+#    - name: gnome-46-2404
+#    - name: gtk-common-themes
 #    - name: thunderbird
 artifacts:
   img:
