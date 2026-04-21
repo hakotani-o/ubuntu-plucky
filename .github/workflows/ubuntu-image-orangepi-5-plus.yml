@@ -50,8 +50,8 @@ jobs:
           tag_name: build-${{ github.run_number }}
           name: "Orange Pi 5 PLUS Disk Image Build ${{ github.run_number }}"
           body: |
-            Orange Pi 5 自作ディスクイメージ
-            ビルド日時: '${{ github.event.head_commit.timestamp }}'
+            Orange Pi 5 PLUS 自作ディスクイメージ
+            ビルド日時: ${{ github.event.head_commit.timestamp }}
             ベースカーネル: 最新メインライン
           draft: false
           prerelease: false
