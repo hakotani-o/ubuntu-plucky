@@ -43,6 +43,7 @@ customization:
     - name: "oem-config"
     - name: "oem-config-debconf"
     - name: "ubiquity-slideshow-ubuntu"
+    - name: "squashfs-tools"
   extra-snaps:
     - name: snapd
 #    - name: bare
