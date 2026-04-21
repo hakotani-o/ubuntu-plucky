@@ -27,10 +27,11 @@ rootfs:
 #      - standard
 customization:
   extra-packages:
+# ubuntu-desktop-minimal を一旦コメントアウト
     - name: "u-boot-tools"
     - name: "u-boot-menu"
 #    - name: "grub-efi-arm64"
-    - name: "ubuntu-desktop-minimal"
+#    - name: "ubuntu-desktop-minimal"
     - name: "linux-firmware"
     - name: "cloud-initramfs-growroot"
     - name: "oem-config-gtk"
