@@ -148,13 +148,6 @@ echo U_BOOT_FDT='"'"device-tree/rockchip/$3.dtb"'"' >> ${mount_point}/writable/e
 
 
 mountpoint="${mount_point}/writable"
-#pam="$(grep pam_pwquality.so $mountpoint/etc/pam.d/common-password | awk '{ print $3 }')"
-#    if [ $pam == "pam_pwquality.so" ]; then
-#		   chmod +x pam-auth.sh
-#           cp pam-auth.sh $mountpoint
-#           chroot $mountpoint /pam-auth.sh
-#           rm $mountpoint/pam-auth.sh
-#    fi
 
 mount dev-live -t devtmpfs "$mountpoint/dev"
 mount devpts-live -t devpts -o nodev,nosuid "$mountpoint/dev/pts"
@@ -184,7 +177,7 @@ losetup -d "${loop}"
 trap '' EXIT
 
 echo -e "\nCompressing $(basename "${img}.xz")\n"
-xz -6 --force --keep --quiet --threads=0 "${img}"
+xz -v -9 -T0 "${img}"
 #rm "${img}"
 #cd ./images && sha256sum "$(basename "${img}.xz")" > "$(basename "${img}.xz.sha256")"
 exit 0
