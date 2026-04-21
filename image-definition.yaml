@@ -31,7 +31,7 @@ customization:
     - name: "u-boot-tools"
     - name: "u-boot-menu"
 #    - name: "grub-efi-arm64"
-#    - name: "ubuntu-desktop-minimal"
+    - name: "ubuntu-desktop-minimal"
     - name: "linux-firmware"
     - name: "cloud-initramfs-growroot"
     - name: "oem-config-gtk"
