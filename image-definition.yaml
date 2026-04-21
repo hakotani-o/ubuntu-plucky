@@ -44,8 +44,8 @@ customization:
     - name: "ubiquity-slideshow-ubuntu"
   extra-snaps:
     - name: snapd
-    - name: bare
-    - name: core22
+#    - name: bare
+#    - name: core22
     - name: core24
 #    - name: firefox
 #    - name: gnome-42-2204
