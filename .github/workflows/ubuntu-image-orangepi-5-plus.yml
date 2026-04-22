@@ -41,7 +41,11 @@ jobs:
 #         compression-level: 0
 #          # The desired behavior if no files are found using the provided path.
 #         if-no-files-found: error
-          
+
+      - name: Get current date
+        id: date
+        run: echo "now=$(date +'%Y-%m%d')" >> $GITHUB_OUTPUT
+
 # 旧: upload-artifact のステップをコメントアウトまたは削除し、以下を追加
       - name: Create Release and Upload
         uses: softprops/action-gh-release@v2
@@ -51,8 +55,8 @@ jobs:
           name: "Orange Pi 5 PLUS Disk Image Build ${{ github.run_number }}"
           body: |
             Orange Pi 5 PLUS 自作ディスクイメージ
-            ビルド日時:${{ env.BUILD_DATE }}
-            ベースカーネル: 最新メインライン
+            ビルド日時: ${{ steps.date.outputs.now }}
+            ベースカーネル: 7.0.0
           draft: false
           prerelease: false
           # ここに圧縮済みファイルのパスを指定します
