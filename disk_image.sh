@@ -142,7 +142,7 @@ else
 	exit 1
 fi
 
-echo U_BOOT_FDT='"'"device-tree/rockchip/$3.dtb"'"' >> ${mount_point}/writable/etc/default/u-boot
+echo U_BOOT_FDT='"'"rockchip/$3.dtb"'"' >> ${mount_point}/writable/etc/default/u-boot
 echo U_BOOT_FDT_DIR='"/usr/lib/linux-image-"' >> ${mount_point}/writable/etc/default/u-boot
 #echo U_BOOT_FDT_OVERLAYS_DIR='"/usr/lib/linux-image-"' >> ${mount_point}/writable/etc/default/u-boot
 
