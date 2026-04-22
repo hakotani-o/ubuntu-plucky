@@ -41,7 +41,12 @@ jobs:
 #         compression-level: 0
 #          # The desired behavior if no files are found using the provided path.
 #         if-no-files-found: error
-          
+
+      - name: Set current datetime as env variable
+        env:
+          TZ: 'Asia/Tokyo' # タイムゾーン指定
+        run: echo "CURRENT_DATETIME=$(date +'%Y-%m-%d %H:%M:%S')" >> $ENV:GITHUB_ENV
+        
 # 旧: upload-artifact のステップをコメントアウトまたは削除し、以下を追加
       - name: Create Release and Upload
         uses: softprops/action-gh-release@v2
@@ -51,7 +56,7 @@ jobs:
           name: "Orange Pi 5 Disk Image Build ${{ github.run_number }}"
           body: |
             Orange Pi 5 自作ディスクイメージ
-            ビルド日時: ${{ env.BUILD_DATE }}
+            ビルド日時: ${{ env.CURRENT_DATETIME }}
             ベースカーネル: 7.0.0
           draft: false
           prerelease: false
