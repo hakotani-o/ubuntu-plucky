@@ -8,7 +8,7 @@ markdown
 - **Kernel**: 自作カスタムカーネル (v7.0.1-rockchip)
   - `CONFIG_EXPERT=n` で安定性を確保
   - Rockchip RK3588 に最適化
-  - 私の使用する環境にどこどん最適化(汎用性なし）
+  - 私の使用する環境にとことん最適化(汎用性なし）
 - **OS**: Ubuntu 26.04 (Resolute)
 - **軽量化**: 
   - 初期状態では **Snap アプリケーション（Firefox等）をインストールしていません**。
