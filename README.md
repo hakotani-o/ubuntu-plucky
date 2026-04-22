@@ -5,7 +5,7 @@ markdown
 自分好みにカスタマイズした、最新メインラインカーネル採用の Ubuntu イメージです。
 
 ## 特徴 (Features)
-- **Kernel**: 自作カスタムカーネル (v7.0.0-rockchip)
+- **Kernel**: 自作カスタムカーネル (v7.0.1-rockchip)
   - `CONFIG_EXPERT=n` で安定性を確保
   - Rockchip RK3588 に最適化
   - 私の使用する環境にどこどん最適化(汎用性なし）
