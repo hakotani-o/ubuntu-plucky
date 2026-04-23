@@ -23,7 +23,7 @@ rootfs:
     names:
 #      - cloud-image
 #      - server
-      - desktop-minimal
+      - minimal
 #      - standard
 customization:
   extra-packages:
