@@ -57,7 +57,7 @@ if [[ "$(basename "${rootfs}")" != *".rootfs.tar" || ! -e "${rootfs}" ]]; then
 fi
 
 mkdir -p images
-now='date --iso-8601='seconds''
+now='date +'%FT%T''
 # Create an empty disk image
 img="./Ubuntu-${kernel_version}-$2-$now.img"
 size="$(( $(wc -c < "${rootfs}" ) / 1024 / 1024 ))"
