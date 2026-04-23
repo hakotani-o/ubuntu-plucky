@@ -120,10 +120,10 @@ mkdir -p ${mount_point}
 tar -xpf "${rootfs}" -C ${mount_point}/writable
 fdt_name="/rockchip/$3.dtb"
 
-dtbs_install_path="/usr/lib/linux-image-${kernel_version}"
+dtbs_install_path="/usr/lib/linux-image-"
 
-if [ ! -f ${mount_point}/writable${dtbs_install_path}${fdt_name} ]; then
-	echo "${dtbs_install_path}${fdt_name}"
+if [ ! -f ${mount_point}/writable${dtbs_install_path}${kernel_version}${fdt_name} ]; then
+	echo "${dtbs_install_path}${kernel_version}${fdt_name}"
 	echo "$3.dtb not found"
 	exit 1
 fi
@@ -143,10 +143,11 @@ else
 	exit 1
 fi
 
-echo U_BOOT_FDT='"'"/rockchip/$3.dtb"'"' >> ${mount_point}/writable/etc/default/u-boot
-echo U_BOOT_FDT_DIR='"/usr/lib/linux-image-"' >> ${mount_point}/writable/etc/default/u-boot
+echo U_BOOT_FDT='"'"$fdt_name"'"' >> ${mount_point}/writable/etc/default/u-boot
+echo U_BOOT_FDT_DIR='"$dtbs_install_path"' >> ${mount_point}/writable/etc/default/u-boot
 #echo U_BOOT_FDT_OVERLAYS_DIR='"/usr/lib/linux-image-"' >> ${mount_point}/writable/etc/default/u-boot
-
+echo "U_BOOT_FDT=$U_BOOT_FDT"
+echo "U_BOOT_FDT_DIR=$U_BOOT_FDT_DIR"
 
 mountpoint="${mount_point}/writable"
 
