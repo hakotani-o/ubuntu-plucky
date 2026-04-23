@@ -146,8 +146,9 @@ fi
 echo U_BOOT_FDT='"'"$fdt_name"'"' >> ${mount_point}/writable/etc/default/u-boot
 echo U_BOOT_FDT_DIR='"$dtbs_install_path"' >> ${mount_point}/writable/etc/default/u-boot
 #echo U_BOOT_FDT_OVERLAYS_DIR='"/usr/lib/linux-image-"' >> ${mount_point}/writable/etc/default/u-boot
-echo "U_BOOT_FDT=$U_BOOT_FDT"
-echo "U_BOOT_FDT_DIR=$U_BOOT_FDT_DIR"
+echo "------------------------------------------------"
+cat ${mount_point}/writable/etc/default/u-boot
+echo "------------------------------------------------"
 
 mountpoint="${mount_point}/writable"
 
