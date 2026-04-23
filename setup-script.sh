@@ -14,8 +14,8 @@ set -x
 	U_BOOT_TIMEOUT="20" 
 EOF
 
-	/usr/sbin/useradd -d /home/oem -G adm,sudo,video -m -N -u 29999 oem
-	/usr/sbin/oem-config-prepare --quiet
+#	/usr/sbin/useradd -d /home/oem -G adm,sudo,video -m -N -u 29999 oem
+#	/usr/sbin/oem-config-prepare --quiet
 	touch "/var/lib/oem-config/run"
 
 	rm -f /var/lib/dbus/machine-id
