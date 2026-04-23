@@ -57,9 +57,9 @@ if [[ "$(basename "${rootfs}")" != *".rootfs.tar" || ! -e "${rootfs}" ]]; then
 fi
 
 mkdir -p images
-
+now='date --iso-8601='seconds''
 # Create an empty disk image
-img="./Ubuntu-${kernel_version}-$2.img"
+img="./Ubuntu-${kernel_version}-$2-$now.img"
 size="$(( $(wc -c < "${rootfs}" ) / 1024 / 1024 ))"
 truncate -s "$(( size + 512 ))M" "${img}"
 
@@ -144,7 +144,7 @@ else
 fi
 
 echo U_BOOT_FDT='"'"$fdt_name"'"' >> ${mount_point}/writable/etc/default/u-boot
-echo U_BOOT_FDT_DIR='"$dtbs_install_path"' >> ${mount_point}/writable/etc/default/u-boot
+echo U_BOOT_FDT_DIR='"'"$dtbs_install_path"'"' >> ${mount_point}/writable/etc/default/u-boot
 #echo U_BOOT_FDT_OVERLAYS_DIR='"/usr/lib/linux-image-"' >> ${mount_point}/writable/etc/default/u-boot
 echo "------------------------------------------------"
 cat ${mount_point}/writable/etc/default/u-boot
