@@ -33,6 +33,8 @@ make defconfig
 make olddefconfig
 
 fakeroot make -j$(nproc) LOCALVERSION="-rockchip" deb-pkg
+tmp_var=$(make LOCALVERSION="-rockchip" -s kernelrelease)
+echo "tmp_var=$tmp_var" > ../../tmp_var.txt
 
 # Exit trap is no longer needed
 trap '' EXIT
