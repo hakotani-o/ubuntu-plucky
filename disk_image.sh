@@ -118,12 +118,12 @@ mkdir -p ${mount_point}
 
 # Copy the rootfs to root partition
 tar -xpf "${rootfs}" -C ${mount_point}/writable
-fdt_name="/rockchip/$3.dtb"
+fdt_name="device-tree/rockchip/$3.dtb"
 
-dtbs_install_path="/usr/lib/linux-image-"
+dtbs_install_path="/lib/firmware/"
 
-if [ ! -f ${mount_point}/writable${dtbs_install_path}${kernel_version}${fdt_name} ]; then
-	echo "${dtbs_install_path}${kernel_version}${fdt_name}"
+if [ ! -f ${mount_point}/writable${dtbs_install_path}${kernel_version}/${fdt_name} ]; then
+	echo "${dtbs_install_path}${kernel_version}/${fdt_name}"
 	echo "$3.dtb not found"
 	exit 1
 fi
