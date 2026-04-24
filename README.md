@@ -38,6 +38,6 @@ sudo snap install firefox
 ```
 
 ### オーディオ設定 
-Audio outから音が出ない場合は、端末から `alsamixer` を起動し、`F6` キーでrockchip,es8388を選択して Output 1 を６０〜６５に設定してください。
+Audio outから音が出ない場合は、端末から `alsamixer` を起動し、`F6` キーで　'rockchip,es8388' を選択して 'Output 1' を６０〜６５に設定してください。
 
 ---
