@@ -37,7 +37,7 @@ sudo apt update && sudo apt install ubuntu-desktop-minimal
 sudo snap install firefox
 ```
 
-### オーディオ設定 (Audio for Plus)
-Plus モデルで音が出ない場合は、端末から `alsamixer` を起動し、`F6` キーでサウンドカードを選択してミュート（MM）を解除（OO）してください。
+### オーディオ設定 
+Audio outから音が出ない場合は、端末から `alsamixer` を起動し、`F6` キーでrockchip,es8388を選択して Output 1 を６０〜６５に設定してください。
 
 ---
