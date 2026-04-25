@@ -47,6 +47,7 @@ customization:
     - name: "snapd"
   extra-snaps:
     - name: snapd
+    - name: core24
     - name: mesa-2404
 #    - name: bare
 #    - name: core22
