@@ -19,9 +19,6 @@ jobs:
       - name: kernel
         run: /bin/bash ./build-kernel.sh arm64 2>&1|tee log1
 
-      - name: remake
-        run: /bin/bash ./remake.sh arm64
-
       - name: rootfs
         run: |
             ls
