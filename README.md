@@ -5,7 +5,7 @@
 ## 特徴 (Features)
 - **Kernel**: 自作カスタムカーネル (v7.0.x-rockchip)
   - `CONFIG_EXPERT=n` で安定性を確保
-  - Rockchip RK3588 / RK3588J に最適化
+  - Rockchip RK3588 / RK3588S に最適化
   - 個人の使用環境に特化した最適化設定
 - **OS**: Ubuntu 26.04 (Resolute)
 - **軽量化**: 
