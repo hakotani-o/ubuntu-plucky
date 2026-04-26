@@ -118,8 +118,8 @@ mkdir -p ${mount_point}
 
 # Copy the rootfs to root partition
 tar -xpf "${rootfs}" -C ${mount_point}/writable
-fdt_name="rockchip/$3.dtb"
 
+fdt_name="rockchip/$3.dtb"
 dtbs_install_path="/usr/lib/linux-image-"
 
 if [ ! -f ${mount_point}/writable${dtbs_install_path}${kernel_version}/${fdt_name} ]; then
@@ -146,9 +146,10 @@ fi
 echo U_BOOT_FDT='"'"$fdt_name"'"' >> ${mount_point}/writable/etc/default/u-boot
 echo U_BOOT_FDT_DIR='"'"$dtbs_install_path"'"' >> ${mount_point}/writable/etc/default/u-boot
 #echo U_BOOT_FDT_OVERLAYS_DIR='"/usr/lib/linux-image-"' >> ${mount_point}/writable/etc/default/u-boot
-echo "------------------------------------------------"
+
+echo "---------------Check the u-boot settings.----------------"
 cat ${mount_point}/writable/etc/default/u-boot
-echo "------------------------------------------------"
+echo "----------------------------------------------------------"
 
 mountpoint="${mount_point}/writable"
 
