@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# ディスクイメージを作成するために必要なツールをインストール
 sudo apt-get update && sudo apt-get -y install  build-essential gcc-aarch64-linux-gnu bison \
 qemu-user-static qemu-system-arm qemu-efi-aarch64 binfmt-support \
 debootstrap flex libssl-dev bc rsync kmod cpio xz-utils fakeroot parted \
