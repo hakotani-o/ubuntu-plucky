@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
+fi
+        disk="/dev/sdb"
+
+        dd if=/dev/zero of="${disk}" count=4096 bs=512
+        parted --script "${disk}" \
+        mklabel gpt \
+        mkpart primary ext4 16MiB 256MiB
+
+        # Create partitions
+        {
+        echo "t"
+        echo "1"
+        echo "C12A7328-F81F-11D2-BA4B-00A0C93EC93B"
+        echo "w"
+        } | fdisk "${disk}" &> /dev/null || true
+
+        partprobe "${disk}"
+
+        mkfs.ext4 "${disk}1"
+
+        dd if=u-boot-rockchip.bin of="${disk}" seek=1 bs=32k conv=fsync
